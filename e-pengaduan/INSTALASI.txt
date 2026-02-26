@@ -1,0 +1,150 @@
+# PANDUAN INSTALASI E-PENGADUAN
+# Tanpa perlu phpMyAdmin!
+
+## CARA INSTALASI MUDAH (Tanpa phpMyAdmin)
+
+### LANGKAH 1: Persiapan
+1. Pastikan XAMPP/WAMP sudah terinstal
+2. Nyalakan Apache dan MySQL di XAMPP Control Panel
+3. Download file e-pengaduan.zip yang sudah saya berikan
+
+### LANGKAH 2: Ekstrak File
+1. Ekstrak file e-pengaduan.zip
+2. Copy folder 'e-pengaduan' ke:
+   - XAMPP: C:\xampp\htdocs\
+   - WAMP: C:\wamp\www\
+
+### LANGKAH 3: Instalasi Database (OTOMATIS)
+1. Buka browser (Chrome/Firefox)
+2. Ketik di address bar: http://localhost/e-pengaduan/install.php
+3. Tekan Enter
+4. Tunggu proses instalasi selesai (akan muncul pesan sukses)
+5. Klik tombol "LOGIN SEKARANG"
+
+### LANGKAH 4: Login
+Gunakan salah satu akun ini:
+
+**ADMIN:**
+- Email: admin@epengaduan.com
+- Password: admin123
+
+**USER:**
+- Email: dimastraning@gmail.com
+- Password: dimas123
+
+### LANGKAH 5: Keamanan
+Setelah berhasil login, HAPUS file install.php untuk keamanan!
+
+## TROUBLESHOOTING
+
+### Problem: "Koneksi MySQL gagal"
+Solusi:
+- Pastikan MySQL di XAMPP sudah running (lampu hijau)
+- Cek di config.php, pastikan:
+  * DB_USER = 'root'
+  * DB_PASS = '' (kosong)
+  * DB_HOST = 'localhost'
+
+### Problem: "Cannot connect to database"
+Solusi:
+- Stop MySQL di XAMPP
+- Start lagi MySQL
+- Refresh browser
+
+### Problem: "Permission denied" saat upload foto
+Solusi:
+- Klik kanan folder 'uploads' dan 'berita'
+- Properties > Security > Edit
+- Berikan Full Control untuk Users
+
+### Problem: File install.php tidak jalan
+Solusi:
+- Pastikan file install.php ada di folder e-pengaduan
+- Cek apakah Apache sudah running
+- Coba akses: http://127.0.0.1/e-pengaduan/install.php
+
+## ALTERNATIF INSTALASI (Manual via Command Line)
+
+Jika cara otomatis tidak berhasil, ikuti langkah ini:
+
+1. Buka Command Prompt/Terminal
+2. Masuk ke MySQL:
+   ```
+   cd C:\xampp\mysql\bin
+   mysql -u root -p
+   ```
+   (Tekan Enter jika diminta password)
+
+3. Jalankan perintah ini satu per satu:
+   ```sql
+   CREATE DATABASE e_pengaduan;
+   USE e_pengaduan;
+   ```
+
+4. Copy isi file database.sql lalu paste ke command prompt
+5. Tekan Enter
+
+6. Buka browser dan akses: http://localhost/e-pengaduan/
+
+## STRUKTUR DATABASE YANG DIBUAT
+
+Database: e_pengaduan
+
+Tabel:
+1. users - Menyimpan data user dan admin
+2. pengaduan - Menyimpan data pengaduan masyarakat
+3. berita - Menyimpan data berita
+
+## FITUR YANG TERSEDIA
+
+### User (Masyarakat)
+- ✅ Registrasi akun baru
+- ✅ Login
+- ✅ Buat pengaduan
+- ✅ Upload foto bukti
+- ✅ Lihat riwayat pengaduan
+- ✅ Lihat status (Pending/Proses/Selesai)
+- ✅ Hapus pengaduan
+- ✅ Lihat profil
+- ✅ FAQ/Bantuan
+
+### Admin
+- ✅ Login admin
+- ✅ Dashboard statistik
+- ✅ Kelola pengaduan
+- ✅ Update status pengaduan
+- ✅ Cetak laporan
+- ✅ Kelola user
+- ✅ Hapus user
+- ✅ Tambah berita
+- ✅ Upload foto berita
+- ✅ Hapus berita
+
+## TIPS PENGGUNAAN
+
+1. **Untuk Admin:**
+   - Cek pengaduan baru di menu "Kelola Pengaduan"
+   - Update status menjadi "Proses" saat sedang ditangani
+   - Update ke "Selesai" jika sudah diselesaikan
+   - Cetak laporan untuk dokumentasi
+
+2. **Untuk User:**
+   - Isi formulir pengaduan dengan lengkap
+   - Upload foto untuk bukti yang lebih kuat
+   - Cek status di menu "Riwayat"
+   - Jangan spam pengaduan yang sama
+
+## KEAMANAN
+
+- Password di-hash dengan MD5
+- Session management untuk autentikasi
+- SQL Injection protection
+- File upload hanya menerima gambar
+- Role-based access (user/admin)
+
+## CONTACT
+
+Jika masih ada masalah, cek file README.md untuk informasi lebih detail.
+
+---
+Selamat menggunakan E-Pengaduan! 🎉
